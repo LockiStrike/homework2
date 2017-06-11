@@ -4,7 +4,7 @@
 module StateAndBehaviour
   # class to feel yourself real driver
   class Car
-    attr_accessor :color, :model, :current_speed, :year
+    attr_reader :color, :model, :current_speed, :year
 
     def self.default_car
       new
@@ -25,5 +25,9 @@ module StateAndBehaviour
     def push_break(value)
       self.current_speed = current_speed - value if value <= current_speed
     end
+
+    private
+
+    attr_writer :color, :model, :current_speed, :year
   end
 end
