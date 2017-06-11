@@ -2,7 +2,7 @@
 
 # exercise state and behaviour
 module StateAndBehaviour
-  # class
+  # class to feel yourself real driver
   class Car
     attr_accessor :color, :model, :current_speed, :sets, :year
 
@@ -12,13 +12,9 @@ module StateAndBehaviour
 
     def initialize(args)
       raise ArgumentError if args.class != Hash
-      if args.empty?
-        set_deafult_args
-      else
-        args.each do |key, value|
-          instance_variable_set("@#{key}", value) unless value.nil?
-        end
-      end
+      self.color = args.fetch('color', 'purple')
+      self.model = args.fetch('model', 'skyline')
+      self.year = args.fetch('year', 2015)
       self.current_speed = 15
     end
 
@@ -28,15 +24,6 @@ module StateAndBehaviour
 
     def push_break(value)
       self.current_speed = current_speed - value if value <= current_speed
-    end
-
-    private
-
-    def set_deafult_args
-      self.sets = 4
-      self.color = 'green'
-      self.model = 'Zaporojec'
-      self.year = 3222
     end
   end
 end
