@@ -4,14 +4,14 @@
 module StateAndBehaviour
   # class to feel yourself real driver
   class Car
-    attr_accessor :color, :model, :current_speed, :sets, :year
+    attr_accessor :color, :model, :current_speed, :year
 
     def self.default_car
-      Car.new {}
+      new
     end
 
     def initialize(args)
-      raise ArgumentError if args.class != Hash
+      raise ArgumentError unless args.instance_of? Hash
       self.color = args.fetch('color', 'purple')
       self.model = args.fetch('model', 'skyline')
       self.year = args.fetch('year', 2015)
