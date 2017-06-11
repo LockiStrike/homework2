@@ -7,7 +7,7 @@ module StateAndBehaviour
     attr_reader :color, :model, :current_speed, :year
 
     def self.default_car
-      new
+      new({})
     end
 
     def initialize(args)
