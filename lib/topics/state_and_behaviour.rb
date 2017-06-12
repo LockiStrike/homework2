@@ -15,11 +15,11 @@ module StateAndBehaviour
       new({})
     end
 
-    def initialize(args)
-      raise ArgumentError unless args.instance_of? Hash
-      self.color = args.fetch('color', DEFAULT_COLOR)
-      self.model = args.fetch('model', DEFAULT_MODEL)
-      self.year = args.fetch('year', DEFAULT_YEAR)
+    def initialize(car_properties)
+      raise ArgumentError unless car_properties.instance_of? Hash
+      self.color = car_properties.fetch('color', DEFAULT_COLOR)
+      self.model = car_properties.fetch('model', DEFAULT_MODEL)
+      self.year = car_properties.fetch('year', DEFAULT_YEAR)
       self.current_speed = DEFAULT_SPEED
     end
 
