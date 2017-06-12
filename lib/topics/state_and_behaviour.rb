@@ -6,24 +6,29 @@ module StateAndBehaviour
   class Car
     attr_reader :color, :model, :current_speed, :year
 
+    DEFAULT_COLOR = 'purple'
+    DEFAULT_MODEL = 'skyline'
+    DEFAULT_YEAR = 2015
+    DEFAULT_SPEED = 0
+
     def self.default_car
       new({})
     end
 
     def initialize(args)
       raise ArgumentError unless args.instance_of? Hash
-      self.color = args.fetch('color', 'purple')
-      self.model = args.fetch('model', 'skyline')
-      self.year = args.fetch('year', 2015)
-      self.current_speed = 15
+      self.color = args.fetch('color', DEFAULT_COLOR)
+      self.model = args.fetch('model', DEFAULT_MODEL)
+      self.year = args.fetch('year', DEFAULT_YEAR)
+      self.current_speed = DEFAULT_SPEED
     end
 
-    def speed_up(value)
-      self.current_speed = value unless value.nil?
+    def speed_up(increase_amount)
+      self.current_speed = increase_amount unless increase_amount.nil?
     end
 
-    def push_break(value)
-      self.current_speed = current_speed - value if value <= current_speed
+    def push_break(decrease_amount)
+      self.current_speed -= decrease_amount if decrease_amount <= current_speed
     end
 
     private
